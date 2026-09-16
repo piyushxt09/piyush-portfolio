@@ -1,26 +1,128 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --primary-color: #3f396d;
+  --secondary-color: #07003b;
+  --accent: #fca61f;
+  --text-color: #7d7789;
+  --off-white-color: #f0f4ff;
+  --light-purple-color: #007abe;
+  --white-color: #ffffff;
+  --light-grey-color: #f2f2ff;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
+  color: var(--text-color);
+  background-color: #ffffff;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Josefin Sans', sans-serif;
+  color: var(--primary-color);
+}
+
+p {
+  font-family: 'Lato', sans-serif;
+}
+
+/* Header & Banner Gradients */
+.bg-banner-gradient {
+  background: linear-gradient(33deg, rgba(242, 242, 255, 1) 0%, rgba(235, 249, 255, 1) 100%);
+}
+
+.bg-portfolio-gradient {
+  background: #007abe;
+}
+
+/* Custom Animation Keyframes */
+@keyframes mover {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-15px); }
+}
+
+@keyframes right-mover {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(15px); }
+}
+
+@keyframes left-mover {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-15px); }
+}
+
+@keyframes floatAnimation {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+.animate-mover {
+  animation: mover 2s infinite alternate ease-in-out;
+}
+
+.animate-float {
+  animation: floatAnimation 3s infinite ease-in-out;
+}
+
+.animate-right-mover {
+  animation: right-mover 2s infinite alternate ease-in-out;
+}
+
+.animate-left-mover {
+  animation: left-mover 2s infinite alternate ease-in-out;
+}
+
+/* Skills Circle Progress */
+.circle-wrap {
+  width: 140px;
+  height: 140px;
+  border: 4px solid #eef6ff;
+  border-radius: 50%;
+  margin: 0 auto 18px;
+  position: relative;
+}
+
+.circle-wrap .circle .mask,
+.circle-wrap .circle .fill {
+  width: 140px;
+  height: 140px;
+  position: absolute;
+  border-radius: 50%;
+}
+
+.circle-wrap .circle .mask {
+  clip: rect(0px, 150px, 150px, 74px);
+}
+
+.circle-wrap .circle .mask .fill {
+  clip: rect(0px, 75px, 150px, 0px);
+}
+
+/* Text Selection */
+::selection {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--light-purple-color);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-color);
 }
