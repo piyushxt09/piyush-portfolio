@@ -31,9 +31,9 @@ export default function Portfolio() {
           <span className="text-white/80 font-semibold text-lg uppercase tracking-wider block mb-2">
             Creative Works
           </span>
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-8">
+          <div className="text-3xl sm:text-4xl font-bold text-white mb-8">
             Check My Recent Projects
-          </h2>
+          </div>
 
           {/* Filter Pills */}
           <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4">
@@ -41,11 +41,10 @@ export default function Portfolio() {
               <button
                 key={btn.value}
                 onClick={() => setActiveFilter(btn.value)}
-                className={`px-6 py-2.5 rounded-full text-base font-bold transition-all cursor-pointer ${
-                  activeFilter === btn.value
-                    ? "bg-white text-[#007abe] shadow-lg scale-105"
-                    : "bg-white/10 text-white hover:bg-white/20"
-                }`}
+                className={`px-6 py-2.5 rounded-full text-base font-bold transition-all cursor-pointer ${activeFilter === btn.value
+                  ? "bg-white text-[#007abe] shadow-lg scale-105"
+                  : "bg-white/10 text-white hover:bg-white/20"
+                  }`}
               >
                 {btn.label}
               </button>

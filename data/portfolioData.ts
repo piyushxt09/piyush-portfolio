@@ -76,7 +76,7 @@ export const portfolioData = {
     aboutBio2:
       "I enjoy turning complex problems into simple, efficient, and user-friendly solutions. From enterprise CRM systems and travel booking platforms to business websites and custom web applications, I focus on delivering clean code, responsive designs, and exceptional user experiences.",
     experienceYears: "3-4 Years",
-    clientsCount: 13,
+    clientsCount: 100,
     contact: {
       phone: "+91 9289033065",
       email: "priyanshuchauhan896@gmail.com",

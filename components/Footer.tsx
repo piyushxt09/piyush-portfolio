@@ -37,9 +37,9 @@ export default function Footer() {
               className="w-full h-full object-cover"
             />
           </div>
-          <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-white">
+          <div className="text-2xl sm:text-3xl font-bold tracking-tight text-white">
             {name}
-          </h3>
+          </div>
         </div>
 
         {/* Short Statement */}

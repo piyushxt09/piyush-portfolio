@@ -7,15 +7,38 @@ import { FaLinkedinIn, FaXTwitter, FaInstagram } from "react-icons/fa6";
 import { portfolioData } from "@/data/portfolioData";
 
 export default function Hero() {
-  const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
+  const [roleIndex, setRoleIndex] = useState(0);
+  const [displayText, setDisplayText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
   const roles = portfolioData.personal.roles;
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentRoleIndex((prev) => (prev + 1) % roles.length);
-    }, 2500);
-    return () => clearInterval(interval);
-  }, [roles.length]);
+    const currentFullText = roles[roleIndex];
+    let timeout: NodeJS.Timeout;
+
+    if (!isDeleting) {
+      if (displayText.length < currentFullText.length) {
+        timeout = setTimeout(() => {
+          setDisplayText(currentFullText.slice(0, displayText.length + 1));
+        }, 85);
+      } else {
+        timeout = setTimeout(() => {
+          setIsDeleting(true);
+        }, 1800);
+      }
+    } else {
+      if (displayText.length > 0) {
+        timeout = setTimeout(() => {
+          setDisplayText(currentFullText.slice(0, displayText.length - 1));
+        }, 45);
+      } else {
+        setIsDeleting(false);
+        setRoleIndex((prev) => (prev + 1) % roles.length);
+      }
+    }
+
+    return () => clearTimeout(timeout);
+  }, [displayText, isDeleting, roleIndex, roles]);
 
   return (
     <section id="home" className="relative w-full bg-banner-gradient pt-8 pb-20 overflow-hidden">
@@ -59,13 +82,11 @@ export default function Hero() {
               Hello, I am
             </h2>
 
-            {/* Dynamic Rotating Roles Text */}
-            <div className="h-16 sm:h-20 flex items-center justify-center lg:justify-start overflow-hidden mb-4">
-              <span
-                key={currentRoleIndex}
-                className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#007abe] transition-all duration-500 transform animate-fadeIn"
-              >
-                {roles[currentRoleIndex]}
+            {/* Dynamic Typewriter Roles Text */}
+            <div className="h-16 sm:h-20 flex items-center justify-center lg:justify-start mb-4">
+              <span className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#007abe] inline-flex items-center min-h-[1.2em]">
+                <span>{displayText}</span>
+                <span className="inline-block w-[3px] sm:w-[4px] h-[0.85em] bg-[#007abe] ml-2 animate-pulse rounded-full" />
               </span>
             </div>
 
@@ -162,7 +183,7 @@ export default function Hero() {
                 </div>
                 <div>
                   <h4 className="text-base font-bold text-[#3f396d] leading-none">
-                    {portfolioData.personal.clientsCount}k+
+                    {portfolioData.personal.clientsCount}+
                   </h4>
                   <span className="text-xs text-[#7d7789]">Clients Served</span>
                 </div>
