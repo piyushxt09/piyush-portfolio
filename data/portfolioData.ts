@@ -82,6 +82,7 @@ export const portfolioData = {
       email: "priyanshuchauhan896@gmail.com",
       address: "Mehrauli, New Delhi - 110030, India",
     },
+    resumeUrl: "/assets/Resume .pdf",
     socials: {
       linkedin: "https://www.linkedin.com/in/priyanshu-chauhan-696a18262/",
       twitter: "https://x.com/Piyush_xt09__",
@@ -232,25 +233,25 @@ export const portfolioData = {
 
   experience: [
     {
-      period: "Nov 2024 - Present",
-      title: "Full Stack Developer",
-      institution: "WebMeen IT Solutions",
-      description:
-        "Developing scalable web applications, enterprise CRMs, and travel technology solutions using Angular 19, PHP, REST APIs, MySQL, and modern frontend frameworks while collaborating with cross-functional teams.",
-    },
-    {
-      period: "2025 - Present",
+      period: "Jan 2026 - Present",
       title: "Travel Technology Solutions",
       institution: "B2B Flight, Hotel & Rail Systems",
       description:
         "Built B2B travel booking platforms, Flight & Hotel CRM, Rail Ticket Booking CRM, supplier management systems, booking workflows, payment integrations, and role-based dashboards with modern Angular applications.",
     },
     {
-      period: "2025 - Present",
+      period: "Jan 2026 - Present",
       title: "Modern Full Stack Development",
       institution: "Angular • Next.js • Node.js",
       description:
         "Building high-performance full-stack applications using Angular 19, Next.js, React.js, Node.js, Express.js, MongoDB, and MySQL with a strong focus on responsive UI/UX, scalability, clean architecture, and API integration.",
+    },
+    {
+      period: "Nov 2024 - Jan 2026",
+      title: "Full Stack Developer",
+      institution: "WebMeen IT Solutions",
+      description:
+        "Developing scalable web applications, enterprise CRMs, and travel technology solutions using Angular 19, PHP, REST APIs, MySQL, and modern frontend frameworks while collaborating with cross-functional teams.",
     },
     {
       period: "2022 - 2024",
@@ -269,7 +270,7 @@ export const portfolioData = {
       category: "crm",
       tags: ["CRM", "Angular 19"],
       image:
-        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&h=540&q=80",
+        "/assets/image/flight&Hotel.png",
       description:
         "A scalable travel technology platform featuring Super Admin, Supplier Management, multi-tier agent booking workflows, payment gateway integrations, and live booking tracking built with Angular 19.",
       features: [
@@ -285,7 +286,7 @@ export const portfolioData = {
       category: "crm",
       tags: ["CRM", "Rail API"],
       image:
-        "https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=800&h=540&q=80",
+        "/assets/image/railticketbooking.png",
       description:
         "Comprehensive railway booking CRM integrated with real-time rail APIs, live PNR tracking, passenger management, seat availability checks, and administrative controls.",
       features: [
@@ -301,7 +302,7 @@ export const portfolioData = {
       category: "travel",
       tags: ["Next.js", "MongoDB"],
       image:
-        "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=800&h=540&q=80",
+        "/assets/image/travelbooking.png",
       description:
         "Interactive web application built with Next.js and MongoDB that allows users to discover, customize, and book tour packages with integrated payment solutions and admin dashboard.",
       features: [
@@ -317,7 +318,7 @@ export const portfolioData = {
       category: "web",
       tags: ["PHP", "MySQL"],
       image:
-        "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&h=540&q=80",
+        "/assets/image/physiocad.png",
       liveUrl: "https://physiocad.com",
       description:
         "Comprehensive healthcare and therapy platform offering patient appointment booking, practitioner dashboards, payment gateway processing, and dynamic content management.",
@@ -334,7 +335,7 @@ export const portfolioData = {
       category: "web",
       tags: ["PHP", "CMS"],
       image:
-        "https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&w=800&h=540&q=80",
+        "/assets/image/bhagwandhaam.png",
       liveUrl: "https://bhagwandham.com",
       description:
         "Custom content management system and interactive community website designed for spiritual knowledge sharing, yoga schedules, event registrations, and multimedia blogs.",
@@ -351,7 +352,7 @@ export const portfolioData = {
       category: "web",
       tags: ["React.js", "Redux"],
       image:
-        "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=800&h=540&q=80",
+        "/assets/image/conference-expense-planner.png",
       liveUrl: "https://conference-expense-plannerxt09.netlify.app/",
       description:
         "Interactive single-page application built with React.js and Redux for real-time budget forecasting, venue selection, meals, technical add-ons, and expense breakdown calculation.",

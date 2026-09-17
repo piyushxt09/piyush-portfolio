@@ -34,13 +34,14 @@ export default function Blog() {
                     src={blog.image}
                     alt={blog.title}
                     fill
+                    unoptimized
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="object-cover transform group-hover:scale-105 transition-transform duration-500"
                   />
                   <span className="absolute top-4 left-4 z-10 px-3.5 py-1 bg-[#3f396d]/85 backdrop-blur-md text-white text-xs font-bold rounded-full">
                     {blog.category}
                   </span>
                 </div>
-
                 {/* Content */}
                 <div className="p-7">
                   <div className="flex items-center justify-between text-xs text-[#7d7789] mb-3">
@@ -88,6 +89,8 @@ export default function Blog() {
                 src={selectedPost.image}
                 alt={selectedPost.title}
                 fill
+                unoptimized
+                sizes="(max-width: 768px) 100vw, 800px"
                 className="object-cover"
               />
             </div>

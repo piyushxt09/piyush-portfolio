@@ -126,3 +126,28 @@ p {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--primary-color);
 }
+
+/* Swiper Custom Pagination & Slide Alignment */
+.portfolio-swiper {
+  padding-bottom: 50px !important;
+}
+
+.portfolio-swiper .swiper-slide {
+  height: auto !important;
+  display: flex;
+}
+
+.portfolio-swiper .swiper-pagination-bullet {
+  background: #007abe;
+  opacity: 0.35;
+  width: 10px;
+  height: 10px;
+  transition: all 0.3s ease;
+}
+
+.portfolio-swiper .swiper-pagination-bullet-active {
+  background: #007abe;
+  opacity: 1;
+  width: 28px;
+  border-radius: 9999px;
+}

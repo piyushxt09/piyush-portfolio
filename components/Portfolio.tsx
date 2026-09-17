@@ -3,9 +3,22 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { FaArrowRight, FaCheckCircle, FaExternalLinkAlt } from "react-icons/fa";
+import {
+  FaArrowRight,
+  FaCheckCircle,
+  FaExternalLinkAlt,
+  FaChevronLeft,
+  FaChevronRight,
+} from "react-icons/fa";
 import { portfolioData, ProjectItem } from "@/data/portfolioData";
 import Modal from "./Modal";
+
+// Swiper imports
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 export default function Portfolio() {
   const [activeFilter, setActiveFilter] = useState<"all" | "crm" | "web" | "travel">("all");
@@ -41,10 +54,11 @@ export default function Portfolio() {
               <button
                 key={btn.value}
                 onClick={() => setActiveFilter(btn.value)}
-                className={`px-6 py-2.5 rounded-full text-base font-bold transition-all cursor-pointer ${activeFilter === btn.value
-                  ? "bg-white text-[#007abe] shadow-lg scale-105"
-                  : "bg-white/10 text-white hover:bg-white/20"
-                  }`}
+                className={`px-6 py-2.5 rounded-full text-base font-bold transition-all cursor-pointer ${
+                  activeFilter === btn.value
+                    ? "bg-white text-[#007abe] shadow-lg scale-105"
+                    : "bg-white/10 text-white hover:bg-white/20"
+                }`}
               >
                 {btn.label}
               </button>
@@ -53,65 +67,119 @@ export default function Portfolio() {
         </div>
       </div>
 
-      {/* Portfolio Cards Grid Body */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-28 relative z-20 pb-24">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {/* Portfolio Swiper Slider Body */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-28 relative z-20 pb-20">
+        {/* Navigation Arrows */}
+        <div className="flex items-center justify-end gap-3 mb-4">
+          <button
+            id="portfolio-swiper-prev"
+            className="w-11 h-11 rounded-full bg-white shadow-md border border-gray-100 flex items-center justify-center text-[#3f396d] hover:bg-[#007abe] hover:text-white transition-all transform hover:scale-105 cursor-pointer"
+            aria-label="Previous Project"
+          >
+            <FaChevronLeft className="text-sm" />
+          </button>
+          <button
+            id="portfolio-swiper-next"
+            className="w-11 h-11 rounded-full bg-white shadow-md border border-gray-100 flex items-center justify-center text-[#3f396d] hover:bg-[#007abe] hover:text-white transition-all transform hover:scale-105 cursor-pointer"
+            aria-label="Next Project"
+          >
+            <FaChevronRight className="text-sm" />
+          </button>
+        </div>
+
+        <Swiper
+          key={activeFilter}
+          modules={[Navigation, Pagination, Autoplay]}
+          navigation={{
+            prevEl: "#portfolio-swiper-prev",
+            nextEl: "#portfolio-swiper-next",
+          }}
+          pagination={{
+            clickable: true,
+            dynamicBullets: true,
+          }}
+          autoplay={{
+            delay: 4000,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
+          }}
+          spaceBetween={28}
+          slidesPerView={1}
+          breakpoints={{
+            640: {
+              slidesPerView: 1,
+              spaceBetween: 24,
+            },
+            768: {
+              slidesPerView: 2,
+              spaceBetween: 28,
+            },
+            1024: {
+              slidesPerView: 3,
+              spaceBetween: 32,
+            },
+          }}
+          className="portfolio-swiper"
+        >
           {filteredProjects.map((project) => (
-            <div
-              key={project.id}
-              className="group relative h-[320px] rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl bg-[#07003b] transition-all duration-500 transform hover:-translate-y-2 cursor-pointer"
-              onClick={() => setSelectedProject(project)}
-            >
-              {/* Image with uniform dimensions and zoom */}
-              <div className="relative w-full h-full">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  className="object-cover transform group-hover:scale-110 transition-transform duration-700"
-                />
-              </div>
-
-              {/* Floating Tags */}
-              <div className="absolute top-4 left-4 z-20 flex gap-2">
-                {project.tags.map((tag, i) => (
-                  <span
-                    key={i}
-                    className="px-3 py-1 bg-[#07003b]/80 backdrop-blur-md text-white text-xs font-semibold rounded-full border border-white/20"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-
-              {/* Dark Gradient Overlay & Text */}
-              <div className="absolute inset-0 z-10 bg-gradient-to-t from-[#07003b] via-[#07003b]/50 to-transparent flex flex-col justify-end p-6">
-                <div className="flex items-end justify-between gap-4">
-                  <div>
-                    <h3 className="text-xl font-bold text-white mb-1 leading-snug">
-                      {project.title}
-                    </h3>
-                    <p className="text-sm text-white/80 line-clamp-2">
-                      {project.subtitle}
-                    </p>
+            <SwiperSlide key={project.id} className="h-full">
+              <div
+                className="w-full h-full bg-white rounded-3xl p-5 sm:p-6 shadow-lg hover:shadow-2xl border border-gray-100 flex flex-col justify-between transition-all duration-300 transform hover:-translate-y-2 cursor-pointer"
+                onClick={() => setSelectedProject(project)}
+              >
+                <div>
+                  {/* Real Image Container with natural proportions */}
+                  <div className="relative w-full rounded-2xl bg-[#f8faff] border border-gray-100 mb-5">
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      width={800}
+                      height={500}
+                      unoptimized
+                      className="w-full h-auto object-contain rounded-2xl transform group-hover:scale-[1.02] transition-transform duration-300"
+                    />
                   </div>
 
+                  {/* Tags */}
+                  <div className="flex flex-wrap gap-2 mb-3">
+                    {project.tags.map((tag, i) => (
+                      <span
+                        key={i}
+                        className="px-3 py-1 bg-[#f0f4ff] text-[#007abe] text-xs font-bold rounded-full"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Title & Subtitle */}
+                  <h3 className="text-xl font-bold text-[#3f396d] hover:text-[#007abe] transition-colors mb-2 leading-snug">
+                    {project.title}
+                  </h3>
+                  <p className="text-sm text-[#7d7789] line-clamp-2 mb-4 leading-relaxed">
+                    {project.subtitle}
+                  </p>
+                </div>
+
+                <div className="pt-4 border-t border-gray-100 flex items-center justify-between">
+                  <span className="text-sm font-bold text-[#007abe] hover:text-[#3f396d] transition-colors">
+                    View Case Study
+                  </span>
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
                       setSelectedProject(project);
                     }}
-                    className="w-11 h-11 rounded-full bg-[#fca61f] group-hover:bg-[#007abe] text-white flex items-center justify-center shrink-0 shadow-lg transform group-hover:rotate-[-45deg] transition-all duration-300"
+                    className="w-10 h-10 rounded-full bg-[#fca61f] hover:bg-[#007abe] text-white flex items-center justify-center shrink-0 shadow-md transform hover:translate-x-1 transition-all duration-300 cursor-pointer"
                     aria-label={`View ${project.title}`}
                   >
                     <FaArrowRight className="w-4 h-4" />
                   </button>
                 </div>
               </div>
-            </div>
+            </SwiperSlide>
           ))}
-        </div>
+        </Swiper>
       </div>
 
       {/* Project Detail Modal */}
@@ -122,12 +190,15 @@ export default function Portfolio() {
       >
         {selectedProject && (
           <div className="space-y-6">
-            <div className="relative w-full h-64 sm:h-80 rounded-2xl overflow-hidden shadow-md">
+            {/* Real Screenshot Preview */}
+            <div className="relative w-full rounded-2xl bg-gray-50 border border-gray-100 shadow-sm p-1.5 sm:p-2">
               <Image
                 src={selectedProject.image}
                 alt={selectedProject.title}
-                fill
-                className="object-cover"
+                width={1200}
+                height={800}
+                unoptimized
+                className="w-full h-auto object-contain rounded-xl"
               />
             </div>
 

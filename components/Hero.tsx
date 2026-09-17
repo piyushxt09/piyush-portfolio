@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { FaLinkedinIn, FaXTwitter, FaInstagram } from "react-icons/fa6";
+import { FaLinkedinIn, FaXTwitter, FaInstagram, FaDownload } from "react-icons/fa6";
 import { portfolioData } from "@/data/portfolioData";
 
 export default function Hero() {
@@ -96,15 +96,19 @@ export default function Hero() {
 
             {/* Action Buttons */}
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4">
-              <Link
-                href="#about"
-                className="px-8 py-4 bg-[#fca61f] hover:bg-[#007abe] text-white font-bold rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
+              <a
+                href={portfolioData.personal.resumeUrl || "/assets/Resume .pdf"}
+                download="Priyanshu_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-8 py-4 bg-[#fca61f] hover:bg-[#007abe] text-white font-bold rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 inline-flex items-center gap-2.5 cursor-pointer"
               >
+                <FaDownload className="text-sm" />
                 Download My CV
-              </Link>
+              </a>
               <Link
                 href="#portfolio"
-                className="px-8 py-4 bg-transparent hover:bg-white text-[#3f396d] font-bold border-2 border-[#3f396d] rounded-full hover:shadow-md transition-all duration-300"
+                className="px-8 py-4 bg-transparent hover:bg-white text-[#3f396d] font-bold border-2 border-[#3f396d] rounded-full hover:shadow-md transition-all duration-300 inline-flex items-center"
               >
                 See My Work
               </Link>
