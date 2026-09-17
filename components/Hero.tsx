@@ -148,6 +148,7 @@ export default function Hero() {
                 <Image
                   src="/assets/image/banner-right-img.png"
                   alt={portfolioData.personal.name}
+                  unoptimized
                   width={500}
                   height={600}
                   className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-500"
