@@ -22,7 +22,7 @@ const lato = Lato({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://piyushsolutions.kesug.com"),
+  metadataBase: new URL("https://piyushxt09.vercel.app"),
   title: "Priyanshu Chauhan | Full Stack Web Developer - Portfolio",
   description:
     "Indian Full Stack Developer with 3-4 years experience in Angular 19, Next.js, React, Node.js, PHP, and MongoDB. Building enterprise CRMs, travel portals, and scalable web solutions.",

@@ -19,7 +19,7 @@ body {
   font-family: 'Josefin Sans', sans-serif;
   color: var(--text-color);
   background-color: #ffffff;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -151,3 +151,4 @@ p {
   width: 28px;
   border-radius: 9999px;
 }
+
